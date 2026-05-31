@@ -7,6 +7,69 @@ const manifesto = [
   "用舞台红色美学包裹黑色童话，让霓虹成为叙事的火光。",
 ];
 
+const members = [
+  {
+    name: "狼人主唱",
+    role: "主唱 / 叙事者",
+    status: "缺席招募中",
+    image: "/images/siren-role-werewolf-vocal.png",
+    absenceImage: "/images/absence-werewolf-gibbous-moon.png",
+    motif: "最接近满月的弦月",
+    text: "负责咆哮、低声旁白与全场情绪牵引，是鲜血狂欢的前场核心。",
+  },
+  {
+    name: "堕天使吉他",
+    role: "吉他 / 噪声",
+    status: "缺席招募中",
+    image: "/images/siren-role-fallen-angel-guitar.png",
+    absenceImage: "/images/absence-fallen-angel-church.png",
+    motif: "圣光教堂",
+    text: "用黑翼、回授和失真和弦切开舞台空间，让圣光坠入噪声墙。",
+  },
+  {
+    name: "吸血鬼键盘",
+    role: "键盘 / 合成器",
+    status: "缺席招募中",
+    image: "/images/siren-role-vampire-keyboard.png",
+    absenceImage: "/images/absence-vampire-upright-coffin.png",
+    motif: "竖着的棺材",
+    text: "操控合成器、管风琴质感和冷蓝雾面，为歌曲铺出地下宫殿。",
+  },
+  {
+    name: "弗兰肯鼓手",
+    role: "鼓 / 心跳",
+    status: "缺席招募中",
+    image: "/images/siren-role-frankenstein-drums.png",
+    absenceImage: "/images/absence-frankenstein-lab-table.png",
+    motif: "怪人躺在实验台",
+    text: "用沉重鼓点和机械律动启动整支乐队，是午夜游行的脉搏。",
+  },
+  {
+    name: "恶魔贝斯",
+    role: "贝斯 / 低频",
+    status: "缺席招募中",
+    image: "/images/siren-role-demon-bass.png",
+    absenceImage: "/images/absence-demon-summoning-circle.png",
+    motif: "召唤阵",
+    text: "负责深红低频、舞台压迫感和危险的身体律动，让地面发热。",
+  },
+];
+
+const soundRoutes = [
+  {
+    title: "后朋克骨架",
+    text: "冷色贝斯线、重复鼓点和留白吉他组成最稳定的身体律动。",
+  },
+  {
+    title: "哥特剧场感",
+    text: "人声叙事更像灯光调度，用红幕、黑色童话和旁白制造舞台纵深。",
+  },
+  {
+    title: "电子噪声边缘",
+    text: "采样、失真与合成器雾面负责把歌曲推向更危险的午夜质地。",
+  },
+];
+
 const tracks = [
   {
     number: "01",
@@ -33,59 +96,12 @@ const tracks = [
     title: "低频剧场",
     description: "贝斯与电子低频占据前景，制造近乎戏剧灯光般的压迫感。",
   },
-  {
-    number: "06",
-    title: "红幕之后的噪声",
-    description: "尾声以反馈、断裂采样和残响收束，留下未完待续的信号。",
-  },
-];
-
-const members = [
-  {
-    name: "主唱 / 叙事者",
-    status: "已设定",
-    isMissing: false,
-    text: "以低声吟唱、旁白与碎片化台词牵引故事，是当前设定中唯一明确登场的成员。",
-  },
-  {
-    name: "吉他 / 噪声",
-    status: "缺席招募中",
-    isMissing: true,
-    text: "需要负责金属质感的泛音、刮擦与回授，把剧场墙面反射出的红光变成旋律。",
-  },
-  {
-    name: "贝斯 / 低频",
-    status: "缺席招募中",
-    isMissing: true,
-    text: "需要用持续下潜的线条建立仪式感，让每个段落保留身体性的重量。",
-  },
-  {
-    name: "鼓 / 心跳",
-    status: "缺席招募中",
-    isMissing: true,
-    text: "需要在鼓机与原始敲击之间切换，维持午夜游行的脉搏和现场推动力。",
-  },
-];
-
-const soundRoutes = [
-  {
-    title: "后朋克骨架",
-    text: "冷色贝斯线、重复鼓点和留白吉他组成最稳定的身体律动。",
-  },
-  {
-    title: "哥特剧场感",
-    text: "人声叙事更像灯光调度，用红幕、黑色童话和旁白制造舞台纵深。",
-  },
-  {
-    title: "电子噪声边缘",
-    text: "采样、失真与合成器雾面负责把歌曲推向更危险的午夜质地。",
-  },
 ];
 
 const releasePlan = [
-  "整理乐队设定、视觉关键词与成员缺席名单。",
-  "完成 3 首 Demo 的歌词、封面和试听入口。",
-  "补齐成员档案后，开放第一场线上概念演出页面。",
+  "用 siren-rock 角色图统一五个任务形象。",
+  "把五张缺席角色图作为召回线索展示。",
+  "补齐成员设定后，开放第一场线上概念演出页面。",
 ];
 
 export default function Home() {
@@ -96,9 +112,9 @@ export default function Home() {
       <Hero />
       <BandIntro />
       <BandMembers />
+      <AbsenceGallery />
       <SoundRoute />
       <TrackArchive />
-      <VisualPoster />
       <ReleasePlan />
       <Subscribe />
       <footer className="border-t border-red-900/40 px-6 py-8 text-sm text-ivory/60 md:px-10">
@@ -115,15 +131,16 @@ function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[82vh] items-end overflow-hidden px-6 pb-12 pt-8 md:px-10 md:pb-14"
+      className="relative flex min-h-[86vh] items-end overflow-hidden px-6 pb-12 pt-8 md:px-10 md:pb-14"
     >
       <Image
-        src="/concept-theater-poster.png"
-        alt="红幕剧场、霓虹月亮与线条噪声组成的鲜血狂欢概念海报"
+        src="/images/blood-carniva-complete-band-theater.png"
+        alt="狼人主唱、堕天使吉他、吸血鬼键盘、弗兰肯鼓手与恶魔贝斯组成的鲜血狂欢完整乐队剧场头图"
         fill
         priority
+        unoptimized
         sizes="100vw"
-        className="hero-asset object-cover"
+        className="hero-asset object-cover object-center"
       />
       <div className="hero-shade" aria-hidden="true" />
       <nav className="absolute left-6 right-6 top-6 z-20 mx-auto flex max-w-6xl items-center justify-between text-sm text-ivory/80 md:left-10 md:right-10">
@@ -137,8 +154,8 @@ function Hero() {
           <a href="#members" className="transition hover:text-redlight">
             成员
           </a>
-          <a href="#sound" className="transition hover:text-redlight">
-            声音路线
+          <a href="#absence" className="transition hover:text-redlight">
+            缺席角色图
           </a>
           <a href="#tracks" className="transition hover:text-redlight">
             曲目
@@ -150,19 +167,19 @@ function Hero() {
       </nav>
 
       <div className="relative z-10 mx-auto w-full max-w-6xl">
-        <div className="max-w-4xl">
+        <div className="max-w-3xl">
           <h1 className="text-6xl font-black leading-none text-ivory sm:text-7xl md:text-8xl lg:text-9xl">
             鲜血狂欢
           </h1>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-ivory/84 md:text-2xl md:leading-10">
-            一支诞生于地下剧场与霓虹余烬之间的概念乐队
+            五位怪诞乐手组成的哥特摇滚剧场完全体
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a className="btn-primary" href="#intro">
-              查看乐队简介
+            <a className="btn-primary" href="#members">
+              查看五个任务形象
             </a>
-            <a className="btn-secondary" href="#members">
-              查看成员缺席
+            <a className="btn-secondary" href="#absence">
+              进入缺席角色图
             </a>
           </div>
           <p className="mt-8 max-w-2xl border-l border-redlight/70 pl-4 text-sm leading-6 text-ivory/72 md:text-base">
@@ -176,7 +193,7 @@ function Hero() {
 
 function BandIntro() {
   return (
-    <section id="intro" className="section-shell bg-charcoal">
+    <section id="intro" className="section-shell bg-charcoal section-glow">
       <div className="grid items-stretch gap-8 lg:grid-cols-[0.92fr_1.08fr]">
         <div>
           <div className="section-heading mb-0">
@@ -206,23 +223,67 @@ function BandMembers() {
       <div className="section-heading">
         <p className="section-index">02</p>
         <div>
-          <h2>乐队成员</h2>
+          <h2>乐队成员 / 五个任务形象</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            当前只明确了主唱叙事者，其余成员席位以红色高亮标记为缺席招募中，方便后续补齐真实或虚构档案。
+            五个任务形象已替换为 siren-rock 项目内的角色图。当前以缺席招募中高亮，等待被完整召回。
           </p>
         </div>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="member-grid">
         {members.map((member) => (
-          <article
-            key={member.name}
-            className={`member-card ${member.isMissing ? "member-card-missing" : ""}`}
-          >
-            <span className={`member-status ${member.isMissing ? "member-status-missing" : ""}`}>
-              {member.status}
-            </span>
-            <h3>{member.name}</h3>
-            <p>{member.text}</p>
+          <article key={member.name} className="member-card member-card-image">
+            <div className="member-image">
+              <Image
+                src={member.image}
+                alt={`${member.name}的 siren-rock 角色图`}
+                fill
+                unoptimized
+                sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 100vw"
+              />
+            </div>
+            <div className="member-copy">
+              <span className="member-status member-status-missing">{member.status}</span>
+              <h3>{member.name}</h3>
+              <p className="member-role">{member.role}</p>
+              <p>{member.text}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function AbsenceGallery() {
+  return (
+    <section id="absence" className="section-shell bg-charcoal">
+      <div className="section-heading">
+        <p className="section-index">03</p>
+        <div>
+          <h2>缺席角色图</h2>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
+            每张图都是一枚召回信标：先出现象征物，再等待对应角色踏上舞台。
+          </p>
+        </div>
+      </div>
+      <div className="absence-grid">
+        {members.map((member) => (
+          <article key={member.motif} className="absence-card">
+            <div className="absence-image">
+              <Image
+                src={member.absenceImage}
+                alt={`${member.name}缺席角色图：${member.motif}`}
+                fill
+                unoptimized
+                sizes="(min-width: 1024px) 33vw, 100vw"
+              />
+            </div>
+            <div className="absence-copy">
+              <span>{member.role}</span>
+              <h3>
+                {member.name}：{member.motif}
+              </h3>
+            </div>
           </article>
         ))}
       </div>
@@ -232,9 +293,9 @@ function BandMembers() {
 
 function SoundRoute() {
   return (
-    <section id="sound" className="section-shell bg-charcoal">
+    <section id="sound" className="section-shell bg-ink">
       <div className="section-heading">
-        <p className="section-index">03</p>
+        <p className="section-index">04</p>
         <div>
           <h2>声音路线</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
@@ -256,9 +317,9 @@ function SoundRoute() {
 
 function TrackArchive() {
   return (
-    <section id="tracks" className="section-shell bg-ink">
+    <section id="tracks" className="section-shell bg-charcoal">
       <div className="section-heading">
-        <p className="section-index">04</p>
+        <p className="section-index">05</p>
         <div>
           <h2>概念 EP / 曲目档案</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
@@ -281,31 +342,6 @@ function TrackArchive() {
   );
 }
 
-function VisualPoster() {
-  return (
-    <section className="section-shell bg-charcoal">
-      <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <div className="section-heading mb-0">
-            <p className="section-index">05</p>
-            <h2>视觉模块</h2>
-          </div>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-ivory/70">
-            红幕剧场、霓虹月亮与线条噪声共同构成这支虚构乐队的舞台坐标。红色在这里是灯光、幕布与情绪隐喻，不指向写实血腥或真实伤害。
-          </p>
-        </div>
-        <figure className="css-poster" aria-label="红幕剧场、霓虹月亮与线条噪声概念海报">
-          <div className="poster-curtain poster-curtain-left" />
-          <div className="poster-curtain poster-curtain-right" />
-          <div className="poster-moon" />
-          <div className="poster-bars" />
-          <div className="poster-noise-lines" />
-        </figure>
-      </div>
-    </section>
-  );
-}
-
 function ReleasePlan() {
   return (
     <section className="section-shell bg-ink">
@@ -314,7 +350,7 @@ function ReleasePlan() {
         <div>
           <h2>发布计划</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            这是我补充的页面段落，用来把“缺席成员”和“概念曲目”连接成后续可执行的官网路线。
+            这是我补充的页面段落，用来把“缺席角色图”和“概念曲目”连接成后续可执行的官网路线。
           </p>
         </div>
       </div>
