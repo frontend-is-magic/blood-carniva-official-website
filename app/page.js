@@ -113,7 +113,10 @@ export default function Home() {
 
 function Hero() {
   return (
-    <section className="relative flex min-h-[82vh] items-end overflow-hidden px-6 pb-12 pt-8 md:px-10 md:pb-14">
+    <section
+      id="top"
+      className="relative flex min-h-[82vh] items-end overflow-hidden px-6 pb-12 pt-8 md:px-10 md:pb-14"
+    >
       <Image
         src="/concept-theater-poster.png"
         alt="红幕剧场、霓虹月亮与线条噪声组成的鲜血狂欢概念海报"
@@ -146,7 +149,7 @@ function Hero() {
         </div>
       </nav>
 
-      <div id="top" className="relative z-10 mx-auto w-full max-w-6xl">
+      <div className="relative z-10 mx-auto w-full max-w-6xl">
         <div className="max-w-4xl">
           <h1 className="text-6xl font-black leading-none text-ivory sm:text-7xl md:text-8xl lg:text-9xl">
             鲜血狂欢
