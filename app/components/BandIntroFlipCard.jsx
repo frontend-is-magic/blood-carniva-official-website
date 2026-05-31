@@ -16,17 +16,17 @@ export default function BandIntroFlipCard() {
       <span className="flip-card-inner">
         <span className="flip-face flip-front">
           <span className="flip-kicker">乐队简介</span>
-          <span className="flip-title">午夜剧场里的猩红噪声</span>
+          <span className="flip-title">刚刚成立的哥特摇滚现场计划</span>
           <span className="flip-copy">
-            鲜血狂欢是一支概念性虚构乐队，把哥特摇滚、后朋克律动和电子低频压进同一个舞台叙事。
+            鲜血狂欢以哥特摇滚为核心，把后朋克律动、暗色旋律和戏剧化人声压进同一个排练室。
           </span>
           <span className="flip-hint">点击卡片翻面</span>
         </span>
         <span className="flip-face flip-back">
-          <span className="flip-kicker">内容介绍</span>
-          <span className="flip-title">不是现实履历，而是声音设定</span>
+          <span className="flip-kicker">成立阶段</span>
+          <span className="flip-title">第一阶段：集结成员，准备首场现场</span>
           <span className="flip-copy">
-            乐队以“红幕、月亮、噪声、游行”为核心意象。每首歌都像一段剧场档案：先制造不安，再把它变成可以跟随的节拍。
+            目前已确认主唱席位，正在寻找吉他、键盘、鼓和贝斯。我们会用官网同步招募、排练、作品发布和演出消息。
           </span>
           <span className="flip-hint">再次点击回到正面</span>
         </span>

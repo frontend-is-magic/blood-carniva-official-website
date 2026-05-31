@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "鲜血狂欢 | Concept Band Website Prototype",
+  title: "鲜血狂欢 | 哥特摇滚乐队官方网站",
   description:
-    "鲜血狂欢是一个概念性虚构乐队 IP 官网原型，融合地下剧场、猩红霓虹、哥特摇滚与后朋克电子噪声。",
+    "鲜血狂欢官方网站。刚刚成立的哥特摇滚乐队，正在集结成员、排练首批作品并准备第一阶段现场。",
 };
 
 export default function RootLayout({ children }) {

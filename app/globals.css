@@ -157,8 +157,7 @@ textarea:focus-visible {
 .manifesto-card,
 .track-card,
 .role-card,
-.member-card,
-.absence-card,
+.member-flip-face,
 .sound-card,
 .plan-step,
 .flip-face,
@@ -312,7 +311,6 @@ textarea:focus-visible {
 
 .track-card h3,
 .role-card h3,
-.member-card h3,
 .sound-card h3 {
   font-size: 1.18rem;
   font-weight: 900;
@@ -321,7 +319,6 @@ textarea:focus-visible {
 
 .track-card p,
 .role-card p,
-.member-card p,
 .sound-card p {
   margin-top: 0.65rem;
   color: var(--muted);
@@ -333,7 +330,6 @@ textarea:focus-visible {
   padding: 1.35rem;
 }
 
-.member-card,
 .sound-card {
   position: relative;
   min-height: 15rem;
@@ -346,60 +342,96 @@ textarea:focus-visible {
   gap: 1rem;
 }
 
-.member-card-image {
+.member-flip-card {
+  display: block;
+  width: 100%;
+  min-height: 34rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  perspective: 1400px;
+  text-align: left;
+}
+
+.member-flip-inner {
+  position: relative;
+  display: block;
+  min-height: 34rem;
+  transform-style: preserve-3d;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.member-flip-card.is-flipped .member-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.member-flip-face {
+  position: absolute;
+  inset: 0;
   display: flex;
-  min-height: 0;
+  min-height: 34rem;
   flex-direction: column;
+  overflow: hidden;
+  backface-visibility: hidden;
+}
+
+.member-flip-front {
   padding: 0;
 }
 
-.member-card-image::before {
-  z-index: 2;
+.member-flip-back {
+  justify-content: space-between;
+  padding: 1.2rem;
+  transform: rotateY(180deg);
+  background:
+    radial-gradient(circle at 16% 10%, rgba(69, 215, 200, 0.16), transparent 11rem),
+    linear-gradient(135deg, rgba(255, 243, 234, 0.08), transparent 44%),
+    rgba(5, 2, 3, 0.76);
+}
+
+.member-flip-card.is-vacant .member-flip-face {
+  border-color: rgba(255, 61, 88, 0.52);
+  background:
+    radial-gradient(circle at 82% 16%, rgba(229, 9, 40, 0.3), transparent 9rem),
+    linear-gradient(180deg, rgba(255, 61, 88, 0.12), rgba(255, 243, 234, 0.025)),
+    rgba(5, 2, 3, 0.64);
+}
+
+.member-flip-card.is-confirmed .member-flip-face {
+  border-color: rgba(69, 215, 200, 0.3);
 }
 
 .member-image {
   position: relative;
-  min-height: 17rem;
+  display: block;
+  min-height: 18rem;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 243, 234, 0.1);
 }
 
-.member-image img,
-.absence-image img {
+.member-image img {
   object-fit: cover;
   transition: transform 500ms ease;
 }
 
-.member-card-image:hover .member-image img,
-.absence-card:hover .absence-image img {
+.member-flip-card:hover .member-image img {
   transform: scale(1.035);
+}
+
+.member-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 34%, rgba(5, 2, 3, 0.86));
 }
 
 .member-copy {
   position: relative;
   z-index: 3;
+  display: block;
   padding: 1.15rem;
-}
-
-.member-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: rgba(69, 215, 200, 0.68);
-}
-
-.member-card-missing {
-  border-color: rgba(255, 61, 88, 0.58);
-  background:
-    radial-gradient(circle at 82% 16%, rgba(229, 9, 40, 0.34), transparent 8rem),
-    linear-gradient(180deg, rgba(255, 61, 88, 0.13), rgba(255, 243, 234, 0.025)),
-    rgba(5, 2, 3, 0.64);
-}
-
-.member-card-missing::before {
-  background: var(--red);
-  box-shadow: 0 0 26px rgba(229, 9, 40, 0.8);
 }
 
 .member-status {
@@ -422,17 +454,28 @@ textarea:focus-visible {
   color: #ff8a9b;
 }
 
-.member-card h3,
+.member-name,
 .sound-card h3 {
   position: relative;
   z-index: 1;
-  margin-top: 1.15rem;
 }
 
-.member-card p,
-.sound-card p {
+.member-name {
+  display: block;
+  margin-top: 1.15rem;
+  color: var(--ivory);
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.member-role,
+.member-summary,
+.member-back-copy,
+.member-flip-hint {
   position: relative;
   z-index: 1;
+  display: block;
 }
 
 .member-role {
@@ -441,47 +484,39 @@ textarea:focus-visible {
   font-weight: 900;
 }
 
-.absence-grid {
-  display: grid;
-  gap: 1rem;
+.member-summary {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
-.absence-card {
-  overflow: hidden;
+.member-back-copy {
+  color: rgba(255, 243, 234, 0.78);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.member-flip-hint {
+  margin-top: 1rem;
+  width: fit-content;
+  border: 1px solid rgba(255, 243, 234, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 243, 234, 0.08);
+  color: rgba(255, 243, 234, 0.76);
+  padding: 0.65rem 0.8rem;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.member-flip-card.is-vacant .member-role {
+  color: #ff9caf !important;
+}
+
+.member-flip-card.is-vacant .member-flip-back {
   background:
-    linear-gradient(180deg, rgba(255, 243, 234, 0.06), rgba(255, 243, 234, 0.018)),
-    rgba(5, 2, 3, 0.58);
-}
-
-.absence-image {
-  position: relative;
-  min-height: 18rem;
-  overflow: hidden;
-}
-
-.absence-image::after,
-.member-image::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(5, 2, 3, 0.82));
-}
-
-.absence-copy {
-  padding: 1.15rem;
-}
-
-.absence-copy span {
-  color: var(--cyan);
-  font-size: 0.82rem;
-  font-weight: 900;
-}
-
-.absence-copy h3 {
-  margin-top: 0.55rem;
-  font-size: 1.2rem;
-  font-weight: 900;
-  line-height: 1.35;
+    radial-gradient(circle at 84% 12%, rgba(229, 9, 40, 0.22), transparent 10rem),
+    linear-gradient(135deg, rgba(255, 61, 88, 0.12), rgba(255, 243, 234, 0.025)),
+    rgba(5, 2, 3, 0.8);
 }
 
 .sound-card {
@@ -709,32 +744,15 @@ textarea:focus-visible {
   .member-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .absence-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (min-width: 1024px) {
   .member-grid {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .member-image {
     min-height: 15rem;
-  }
-
-  .absence-grid {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
-
-  .absence-card {
-    grid-column: span 2;
-  }
-
-  .absence-card:first-child,
-  .absence-card:nth-child(2) {
-    grid-column: span 3;
   }
 
   .release-plan {
@@ -757,13 +775,14 @@ textarea:focus-visible {
     animation: moon-glow 5.6s ease-in-out infinite;
   }
 
-  .member-card-missing {
+  .member-flip-card.is-vacant .member-flip-face {
     animation: missing-seat 3.8s ease-in-out infinite;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .flip-card-inner {
+  .flip-card-inner,
+  .member-flip-inner {
     transition: none;
   }
 }

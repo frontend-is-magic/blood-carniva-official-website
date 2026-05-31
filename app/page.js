@@ -1,72 +1,83 @@
 import Image from "next/image";
 import BandIntroFlipCard from "./components/BandIntroFlipCard";
+import MemberFlipCard from "./components/MemberFlipCard";
 
 const manifesto = [
-  "把恐惧转译成节拍，让阴影在鼓点里变得可被凝视。",
-  "建立一个虚构声音宇宙：每段噪声都是午夜剧场的暗门。",
-  "用舞台红色美学包裹黑色童话，让霓虹成为叙事的火光。",
+  "刚刚成立的鲜血狂欢以哥特摇滚为核心，把红幕剧场感、后朋克节拍与冷冽合成器放进同一套现场语言。",
+  "乐队正在从排练室走向第一批公开现场，官网会记录成员集结、作品排练与演出公布。",
+  "我们偏爱低频推进、戏剧化主唱、暗色旋律，以及适合舞台灯光的猩红视觉。",
 ];
 
 const members = [
   {
     name: "狼人主唱",
     role: "主唱 / 叙事者",
-    status: "缺席招募中",
+    status: "正式成员",
+    isPresent: true,
     image: "/images/siren-role-werewolf-vocal.png",
-    absenceImage: "/images/absence-werewolf-gibbous-moon.png",
-    motif: "最接近满月的弦月",
-    text: "负责咆哮、低声旁白与全场情绪牵引，是鲜血狂欢的前场核心。",
+    imageAlt: "鲜血狂欢狼人主唱正式成员图",
+    summary: "首批确认成员，负责主唱、舞台叙事与现场情绪推进。",
+    detail:
+      "以沙哑叙事、爆发式副歌和暗色戏剧感建立鲜血狂欢的前场气质。现场中，他负责把哥特摇滚的阴影、低频与观众呼吸连在一起。",
   },
   {
     name: "堕天使吉他",
-    role: "吉他 / 噪声",
-    status: "缺席招募中",
-    image: "/images/siren-role-fallen-angel-guitar.png",
-    absenceImage: "/images/absence-fallen-angel-church.png",
-    motif: "圣光教堂",
-    text: "用黑翼、回授和失真和弦切开舞台空间，让圣光坠入噪声墙。",
+    role: "吉他 / 噪声层",
+    status: "空缺招募中",
+    isPresent: false,
+    image: "/images/absence-fallen-angel-church.png",
+    imageAlt: "堕天使吉他空缺席位图",
+    summary: "寻找能让主音、回授与噪声墙真正站上舞台的吉他手。",
+    join:
+      "请准备 2 段现场或排练视频、1 段原创 riff，以及可稳定排练的时间说明。偏好哥特摇滚、后朋克、暗潮或噪声摇滚经验。",
   },
   {
     name: "吸血鬼键盘",
     role: "键盘 / 合成器",
-    status: "缺席招募中",
-    image: "/images/siren-role-vampire-keyboard.png",
-    absenceImage: "/images/absence-vampire-upright-coffin.png",
-    motif: "竖着的棺材",
-    text: "操控合成器、管风琴质感和冷蓝雾面，为歌曲铺出地下宫殿。",
+    status: "空缺招募中",
+    isPresent: false,
+    image: "/images/absence-vampire-upright-coffin.png",
+    imageAlt: "吸血鬼键盘空缺席位图",
+    summary: "寻找能处理氛围铺底、管风琴质感与冷色合成器的键盘手。",
+    join:
+      "请提供 2 段演奏或编曲片段，说明擅长的合成器、采样器或软件环境。能参与现场音色设计者优先。",
   },
   {
     name: "弗兰肯鼓手",
     role: "鼓 / 心跳",
-    status: "缺席招募中",
-    image: "/images/siren-role-frankenstein-drums.png",
-    absenceImage: "/images/absence-frankenstein-lab-table.png",
-    motif: "怪人躺在实验台",
-    text: "用沉重鼓点和机械律动启动整支乐队，是午夜游行的脉搏。",
+    status: "空缺招募中",
+    isPresent: false,
+    image: "/images/absence-frankenstein-lab-table.png",
+    imageAlt: "弗兰肯鼓手空缺席位图",
+    summary: "寻找能在现场鼓组与机械律动之间切换的鼓手。",
+    join:
+      "请准备稳定节拍、半速段落和强动态段落各 1 段视频。熟悉点击轨、采样触发或电子鼓混合配置者优先。",
   },
   {
     name: "恶魔贝斯",
     role: "贝斯 / 低频",
-    status: "缺席招募中",
-    image: "/images/siren-role-demon-bass.png",
-    absenceImage: "/images/absence-demon-summoning-circle.png",
-    motif: "召唤阵",
-    text: "负责深红低频、舞台压迫感和危险的身体律动，让地面发热。",
+    status: "空缺招募中",
+    isPresent: false,
+    image: "/images/absence-demon-summoning-circle.png",
+    imageAlt: "恶魔贝斯空缺席位图",
+    summary: "寻找能把低频、身体律动和压迫感推到前景的贝斯手。",
+    join:
+      "请提交 2 段贝斯演奏视频，包含稳定根音推进和旋律性走句。偏好失真、合唱、八度或合成贝斯处理经验。",
   },
 ];
 
 const soundRoutes = [
   {
-    title: "后朋克骨架",
-    text: "冷色贝斯线、重复鼓点和留白吉他组成最稳定的身体律动。",
+    title: "哥特摇滚核心",
+    text: "厚重吉他、暗色旋律与戏剧化人声构成乐队主轴，舞台气质比技术炫耀更重要。",
   },
   {
-    title: "哥特剧场感",
-    text: "人声叙事更像灯光调度，用红幕、黑色童话和旁白制造舞台纵深。",
+    title: "后朋克律动",
+    text: "低频线条与重复节拍负责推动身体感，让歌曲保留冷峻、直接、可现场执行的骨架。",
   },
   {
-    title: "电子噪声边缘",
-    text: "采样、失真与合成器雾面负责把歌曲推向更危险的午夜质地。",
+    title: "电子暗流",
+    text: "合成器、采样与噪声层不抢走乐队现场感，而是把歌曲推向更深的夜色。",
   },
 ];
 
@@ -99,9 +110,9 @@ const tracks = [
 ];
 
 const releasePlan = [
-  "用 siren-rock 角色图统一五个任务形象。",
-  "把五张缺席角色图作为召回线索展示。",
-  "补齐成员设定后，开放第一场线上概念演出页面。",
+  "完成吉他、键盘、鼓、贝斯四个席位的面试与试排。",
+  "发布第一段排练室影像，公开乐队声音方向。",
+  "公布首场小型现场计划，并同步开放演出合作联系。",
 ];
 
 export default function Home() {
@@ -112,7 +123,6 @@ export default function Home() {
       <Hero />
       <BandIntro />
       <BandMembers />
-      <AbsenceGallery />
       <SoundRoute />
       <TrackArchive />
       <ReleasePlan />
@@ -120,7 +130,7 @@ export default function Home() {
       <footer className="border-t border-red-900/40 px-6 py-8 text-sm text-ivory/60 md:px-10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} 鲜血狂欢</p>
-          <p>Concept band website prototype</p>
+          <p>Blood Carniva Official Website</p>
         </div>
       </footer>
     </main>
@@ -154,11 +164,11 @@ function Hero() {
           <a href="#members" className="transition hover:text-redlight">
             成员
           </a>
-          <a href="#absence" className="transition hover:text-redlight">
-            缺席角色图
+          <a href="#sound" className="transition hover:text-redlight">
+            风格
           </a>
           <a href="#tracks" className="transition hover:text-redlight">
-            曲目
+            作品
           </a>
           <a href="#signal" className="transition hover:text-redlight">
             信号
@@ -172,18 +182,18 @@ function Hero() {
             鲜血狂欢
           </h1>
           <p className="mt-6 max-w-2xl text-xl leading-8 text-ivory/84 md:text-2xl md:leading-10">
-            五位怪诞乐手组成的哥特摇滚剧场完全体
+            刚刚成立的哥特摇滚乐队，正在集结第一支完整阵容
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a className="btn-primary" href="#members">
-              查看五个任务形象
+              查看成员阵容
             </a>
-            <a className="btn-secondary" href="#absence">
-              进入缺席角色图
+            <a className="btn-secondary" href="#signal">
+              了解加入方式
             </a>
           </div>
           <p className="mt-8 max-w-2xl border-l border-redlight/70 pl-4 text-sm leading-6 text-ivory/72 md:text-base">
-            这是概念性虚构乐队 IP，不对应现实中的具体乐队、成员或演出。
+            官方网站记录乐队从成立、招募、排练到首场现场的每一步。
           </p>
         </div>
       </div>
@@ -201,7 +211,7 @@ function BandIntro() {
             <h2>乐队简介</h2>
           </div>
           <p className="mt-6 max-w-xl text-lg leading-8 text-ivory/70">
-            点击卡片翻面可以查看乐队内容介绍。这里把“鲜血狂欢”处理成虚构乐队 IP，而不是现实成员履历。
+            点击卡片翻面可以查看乐队内容介绍。鲜血狂欢的声音以哥特摇滚为核心，正在形成第一阶段现场阵容。
           </p>
           <div className="mt-8 grid gap-4">
             {manifesto.map((line) => (
@@ -223,68 +233,15 @@ function BandMembers() {
       <div className="section-heading">
         <p className="section-index">02</p>
         <div>
-          <h2>乐队成员 / 五个任务形象</h2>
+          <h2>乐队成员</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            五个任务形象已替换为 siren-rock 项目内的角色图。当前以缺席招募中高亮，等待被完整召回。
+            已确认成员展示正式图，点击翻面查看介绍；空缺席位展示招募图，点击翻面查看加入方式。
           </p>
         </div>
       </div>
       <div className="member-grid">
         {members.map((member) => (
-          <article key={member.name} className="member-card member-card-image">
-            <div className="member-image">
-              <Image
-                src={member.image}
-                alt={`${member.name}的 siren-rock 角色图`}
-                fill
-                unoptimized
-                sizes="(min-width: 1280px) 20vw, (min-width: 768px) 33vw, 100vw"
-              />
-            </div>
-            <div className="member-copy">
-              <span className="member-status member-status-missing">{member.status}</span>
-              <h3>{member.name}</h3>
-              <p className="member-role">{member.role}</p>
-              <p>{member.text}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function AbsenceGallery() {
-  return (
-    <section id="absence" className="section-shell bg-charcoal">
-      <div className="section-heading">
-        <p className="section-index">03</p>
-        <div>
-          <h2>缺席角色图</h2>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            每张图都是一枚召回信标：先出现象征物，再等待对应角色踏上舞台。
-          </p>
-        </div>
-      </div>
-      <div className="absence-grid">
-        {members.map((member) => (
-          <article key={member.motif} className="absence-card">
-            <div className="absence-image">
-              <Image
-                src={member.absenceImage}
-                alt={`${member.name}缺席角色图：${member.motif}`}
-                fill
-                unoptimized
-                sizes="(min-width: 1024px) 33vw, 100vw"
-              />
-            </div>
-            <div className="absence-copy">
-              <span>{member.role}</span>
-              <h3>
-                {member.name}：{member.motif}
-              </h3>
-            </div>
-          </article>
+          <MemberFlipCard key={member.name} member={member} />
         ))}
       </div>
     </section>
@@ -293,13 +250,13 @@ function AbsenceGallery() {
 
 function SoundRoute() {
   return (
-    <section id="sound" className="section-shell bg-ink">
+    <section id="sound" className="section-shell bg-charcoal">
       <div className="section-heading">
-        <p className="section-index">04</p>
+        <p className="section-index">03</p>
         <div>
           <h2>声音路线</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            为页面增加一个比曲目更上层的风格说明，让访客先理解乐队声音，再进入曲目档案。
+            这是鲜血狂欢成立初期确定的创作坐标：以哥特摇滚为根，保留后朋克律动和电子噪声的暗色边缘。
           </p>
         </div>
       </div>
@@ -317,13 +274,13 @@ function SoundRoute() {
 
 function TrackArchive() {
   return (
-    <section id="tracks" className="section-shell bg-charcoal">
+    <section id="tracks" className="section-shell bg-ink">
       <div className="section-heading">
-        <p className="section-index">05</p>
+        <p className="section-index">04</p>
         <div>
-          <h2>概念 EP / 曲目档案</h2>
+          <h2>首批作品方向</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            以下为占位曲目结构，后续可替换为真实 Demo、歌词、试听链接。
+            乐队正在排练第一批作品，正式曲名、试听与歌词会随首支公开录音一起公布。
           </p>
         </div>
       </div>
@@ -344,13 +301,13 @@ function TrackArchive() {
 
 function ReleasePlan() {
   return (
-    <section className="section-shell bg-ink">
+    <section className="section-shell bg-charcoal">
       <div className="section-heading">
-        <p className="section-index">06</p>
+        <p className="section-index">05</p>
         <div>
-          <h2>发布计划</h2>
+          <h2>近期计划</h2>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ivory/64">
-            这是我补充的页面段落，用来把“缺席角色图”和“概念曲目”连接成后续可执行的官网路线。
+            鲜血狂欢刚刚成立，当前重点是补齐阵容、稳定排练，并把第一阶段声音带到现场。
           </p>
         </div>
       </div>
@@ -368,37 +325,37 @@ function ReleasePlan() {
 
 function Subscribe() {
   return (
-    <section id="signal" className="section-shell bg-charcoal">
+    <section id="signal" className="section-shell bg-ink">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <div>
           <div className="section-heading mb-0">
-            <p className="section-index">07</p>
-            <h2>订阅 / 联系</h2>
+            <p className="section-index">06</p>
+            <h2>联系 / 加入</h2>
           </div>
           <p className="mt-6 text-lg leading-8 text-ivory/70">
-            留下一个入口，等待下一次信号。当前为静态表单与 mailto 占位，后续可接入 Resend、Buttondown、ConvertKit 或 CMS。
+            成员招募、演出邀约和媒体合作都可以从这里发出。加入成员请附作品链接、所在城市和可排练时间。
           </p>
         </div>
         <form
           className="signal-form"
-          action="mailto:signal@blood-carniva.example"
+          action="mailto:contact@blood-carniva.com"
           method="post"
           encType="text/plain"
         >
           <label>
-            <span>信号代号</span>
-            <input name="name" type="text" placeholder="午夜听众" />
+            <span>姓名 / 乐队称呼</span>
+            <input name="name" type="text" placeholder="你的称呼" />
           </label>
           <label>
-            <span>接收邮箱</span>
-            <input name="email" type="email" placeholder="you@example.com" />
+            <span>联系邮箱</span>
+            <input name="email" type="email" placeholder="name@domain.com" />
           </label>
           <label>
-            <span>留言</span>
-            <textarea name="message" rows="4" placeholder="告诉我们你听见了哪一种噪声" />
+            <span>来意</span>
+            <textarea name="message" rows="4" placeholder="成员申请、演出邀约或合作说明" />
           </label>
           <button className="btn-primary w-full sm:w-auto" type="submit">
-            接收下一次信号
+            发送联系邮件
           </button>
         </form>
       </div>
